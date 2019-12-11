@@ -7,22 +7,18 @@ firebase.initializeApp({
   
 var db = firebase.firestore();
 
-var firebaseConfig = {
-    apiKey: "AIzaSyC6X9UJxHgsItT46fkeYHrBVF4OdyZCseI",
-    authDomain: "sportnew-1745e.firebaseapp.com",
-    databaseURL: "https://sportnew-1745e.firebaseio.com",
-    projectId: "sportnew-1745e",
-    storageBucket: "sportnew-1745e.appspot.com",
-    messagingSenderId: "368775563030",
-    appId: "1:368775563030:web:4976819b7967f6ef0cf237"
-  };
-
   function ingresarDatos(){
 
-    db.collection("users").add({
-        first: "Ada",
-        last: "Lovelace",
-        born: 1815
+    var nomb = document.getElementById("name").value;
+    var telefono = document.getElementById("phone").value;
+    var email = document.getElementById("email").value;
+    var mensage = document.getElementById("message").value;
+
+    db.collection("consultas").add({
+        Nombre: nomb,
+        Telefono: telefono,
+        Email: email,
+        Mensage: mensage
     })
     .then(function(docRef) {
         console.log("Document written with ID: ", docRef.id);
@@ -31,4 +27,5 @@ var firebaseConfig = {
         console.error("Error adding document: ", error);
     });
     
+    alert("datos enviados con exito")
   }
